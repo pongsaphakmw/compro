@@ -20,4 +20,10 @@ class main_menu:
     
     def game_menu():
         print('\t\t\tChoose mini games to play')
+        print('\t\tGame 1 : Type 1')
+        print('\t\tGame 2 : Type 2')
+        print('\t\tGame 3 : Type 3')
+        print('\t\t\t\t\t\t\t\t\tType "i" to open inventory')
+        
 
+main_menu.game_menu()
