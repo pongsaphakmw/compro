@@ -1,0 +1,27 @@
+[
+    {
+        "mail": "test@gmail.com",
+        "user": "test",
+        "pass": "81dc9bdb52d04dc20036dbd8313ed055"
+    },
+    {
+        "mail": "test2@gmail.com",
+        "user": "test2",
+        "pass": "81dc9bdb52d04dc20036dbd8313ed055"
+    },
+    {
+        "mail": "test3@gmail.com",
+        "user": "test3",
+        "pass": "81dc9bdb52d04dc20036dbd8313ed055"
+    },
+    {
+        "mail": "test4@gmail.com",
+        "user": "test4",
+        "pass": "fcea920f7412b5da7be0cf42b8c93759"
+    },
+    {
+        "mail": "test4@gmail.com",
+        "user": "test4",
+        "pass": "81dc9bdb52d04dc20036dbd8313ed055"
+    }
+]
