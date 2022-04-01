@@ -23,5 +23,15 @@
         "mail": "test4@gmail.com",
         "user": "test4",
         "pass": "81dc9bdb52d04dc20036dbd8313ed055"
+    },
+    {
+        "mail": "test5@gmail.com",
+        "user": "test5",
+        "pass": "827ccb0eea8a706c4c34a16891f84e7b"
+    },
+    {
+        "mail": "test7@gmail.com",
+        "user": "test7",
+        "pass": "e10adc3949ba59abbe56e057f20f883e"
     }
 ]
