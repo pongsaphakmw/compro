@@ -65,10 +65,12 @@ def Login():
                 check_user = dict[x]['user']
                 check_mail = dict[z]['mail']
                 check_pass = dict[y]['pass']
+                # print(check_pass)
                 if login_user == check_user or login_user == check_mail :
                     if auth_hash == check_pass:
                         print('Login success!')
-                        return True
+                        print('Welcome %s !'%check_user)
+                        return check_user
                     else:
                         y+=1
                 else:
@@ -81,8 +83,10 @@ def Login():
                     #     break
             else:
                 continue
+     
  
 # Register() #debugger
 # Login()
+# print(Login())
 # with open('user1.json','r') as f:
 #     list_user = json.loads(f.read())    
