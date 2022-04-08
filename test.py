@@ -1,42 +1,53 @@
-import hashlib
-def signup():
-    email = input('Enter email address: ')
-    pwd = input('Enter password: ')
-    conf_pwd = input('Confirm password: ')
-    if conf_pwd == pwd:
-        enc = conf_pwd.encode()
-        hash1 = hashlib.md5(enc).hexdigest()
-        with open('credentials.txt', 'w') as f:
-             f.write(email + '\n')
-             f.write(hash1)
-        f.close()
-        print('You have registered successfully!')
-    else:
-        print('Password is not same as above! \n')
-def login():
-    email = input('Enter email: ')
-    pwd = input('Enter password: ')
-    auth = pwd.encode()
-    auth_hash = hashlib.md5(auth).hexdigest()
-    with open('credentials.txt', 'r') as f:
-        stored_email, stored_pwd = f.read().split('\n')
-    f.close()
-    if email == stored_email and auth_hash == stored_pwd:
-         print('Logged in Successfully!')
-    else:
-         print('Login failed! \n')
-while 1:
-    print("********** Login System **********")
-    print("1.Signup")
-    print("2.Login")
-    print("3.Exit")
-    ch = int(input("Enter your choice: "))
-    if ch == 1:
-        signup()
-    elif ch == 2:
-        login()
-    elif ch == 3:
-        break
-    else:
-        print("Wrong Choice!")
+import re
+import json
 
+def Register():
+    regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+    while 1:
+        user = input('Enter your email here : ')
+        if (re.fullmatch(regex, user)):
+            password = input('Enter your password here : ')
+            con_password = input('Confirm your password : ')
+            if password == con_password:
+                user_data = {'mail':user, 'pass': con_password}
+                with open('user2.json','r') as d:
+                    data = json.load(d)
+
+                data.append(user_data)
+
+                with open('user2.json','w') as d:
+                    json.dump(data, d, indent=4)
+                return user_data # ไม่ใส่ก็ได้
+        else:
+            print('Wrong email try again!')
+            continue
+        
+def Login():
+    while 1:
+        login_user = input('ใส่เข้าน้องมาเลยน้องจ๋า : ')
+        login_pass = input('ใส่มาเลยพี่จ๋า : ')
+        with open('user2.json','r') as d:
+            a = 0;b = 0
+            mydict = json.loads(d.read())
+            while a <= len(mydict):
+                if b >= len(mydict):
+                    print('Wrong pass word จ่ะพี่จ๋า')
+                    break
+                elif a >= len(mydict):
+                    print('Wrong username จ่ะพี่จ๋า')
+                    break
+                check_user = mydict[a]['mail']
+                check_pass = mydict[a]['pass']
+                if login_user == check_user:
+                    if login_pass == mydict[a]['pass']:
+                        print('login success!')
+                        return check_user
+                    else:
+                        b += 1       
+                else:
+                    a +=1
+            else:
+                continue
+    
+# Register()
+Login()

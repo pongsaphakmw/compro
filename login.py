@@ -63,8 +63,8 @@ def Login():
                     print('Wrong username!')
                     break
                 check_user = dict[x]['user']
-                check_mail = dict[z]['mail']
-                check_pass = dict[y]['pass']
+                check_mail = dict[x]['mail']
+                check_pass = dict[x]['pass']
                 # print(check_pass)
                 if login_user == check_user or login_user == check_mail :
                     if auth_hash == check_pass:
@@ -86,7 +86,7 @@ def Login():
      
  
 # Register() #debugger
-# Login()
+Login()
 # print(Login())
 # with open('user1.json','r') as f:
 #     list_user = json.loads(f.read())    
