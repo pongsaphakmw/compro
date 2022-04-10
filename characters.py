@@ -11,10 +11,10 @@ class Character:
     def Health(self, start_health):
         self.HP = self.HP + start_health
     def Inventory(self,inv_slots): # Inprogress it's hard ;-;
-        self.Slots = self.Slots - inv_slots
-        
         with open('inventory.json','r') as inv:
             data_inv = json.load(inv)
+
+        self.Slots = self.Slots - inv_slots
 
         data_inv.append(self.Slots)
 
@@ -28,6 +28,16 @@ class Character:
         self.sheilds = self.sheilds + add_sheild
     def Attack(self, attack_damage):
         self.HP = self.HP - attack_damage
+
+    def collect_items(user_char,item,qty):
+        collecting = {'user' : user_char, 'item' : item, 'quantities' : qty}
+        with open('inventory.json','r') as cl:
+            inv_data = json.load(cl)
+
+        inv_data.append(collecting)
+
+        with open('inventory.json','w') as cl:
+            json.dump(inv_data,cl,indent=4)
 
 class Game_items:
     def __init__(self, name, qty, space):
@@ -53,22 +63,20 @@ class Game_items:
         ]
 
         all_items = [
-            {'Noob_potion' : Game_items('Blue_potion', 1, 1)},
-            {'Normal_potion' : Game_items('Yellow_potion',1,1)},
-            {'Good_potion' : Game_items('Red_potion',1,1)},
-            {'Super_potion' : Game_items('White_potion',1,1)},
-            {'God_potion' : Game_items('????',1,1)},
-            {'Wooden_sword' : Game_items('Wooden_sword',1,1)},
-            {'Iron_sword' : Game_items('Iron_sword',1,1)},
-            {'Diamond_sword' : Game_items('Diamond_sword',1,1)},
-            {'Platinum_sword' : Game_items('Platinum_sword',1,1)},
+            {'potion' : Game_items('Blue_potion', 1, 1)},
+            {'potion' : Game_items('Yellow_potion',1,1)},
+            {'potion' : Game_items('Red_potion',1,1)},
+            {'potion' : Game_items('White_potion',1,1)},
+            {'potion' : Game_items('????',1,1)},
+            {'sword' : Game_items('Wooden_sword',1,1)},
+            {'sword' : Game_items('Iron_sword',1,1)},
+            {'sword' : Game_items('Diamond_sword',1,1)},
+            {'sword' : Game_items('Platinum_sword',1,1)},
+            {'armor' : Game_items('Leather_armor',1,1)}
         ]
         # print(all_char[0]['main_char'].Slots) #debugger
         return all_char, all_items
 
-def collect_items(user_char,item,qty):
-    collecting = {'user' : user_char, 'item' : item, 'quantities' : qty}
-    
 
 def game_timer(time_sec):
     while time_sec:

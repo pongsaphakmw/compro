@@ -86,7 +86,7 @@ def Login():
      
  
 # Register() #debugger
-Login()
+# Login()
 # print(Login())
 # with open('user1.json','r') as f:
 #     list_user = json.loads(f.read())    
