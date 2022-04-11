@@ -1,8 +1,5 @@
-[
-    {
-        "user": "test",
-        "item": "White_potion",
-        "qty": "1"
-    },
-    {
-        "user": 
+{
+    "user": "test",
+    "item": "Yellow_potion",
+    "qty": 1
+}

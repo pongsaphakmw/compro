@@ -65,6 +65,7 @@ def Login():
                 check_user = dict[x]['user']
                 check_mail = dict[x]['mail']
                 check_pass = dict[x]['pass']
+                # Bad Big(o)
                 # print(check_pass)
                 if login_user == check_user or login_user == check_mail :
                     if auth_hash == check_pass:
