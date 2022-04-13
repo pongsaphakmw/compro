@@ -9,10 +9,12 @@ class main_menu:
             choose = int(input('\t\tEnter your choose here : '))
             print('\t----------------------------------------------')
             if choose == 1:
-                login.Register()
-                break
+                username = login.Register()
+                return username
+                # break
             elif choose == 2 :
-                login.Login()
+                username = login.Login()
+                return username
                 break
             else:    
                 print('Wrong input!')
@@ -44,4 +46,4 @@ class main_menu:
                 continue
         
 
-# main_menu.game_menu()
+# print(main_menu.login_menu())

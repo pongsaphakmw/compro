@@ -29,16 +29,6 @@ class Character:
     def Attack(self, attack_damage):
         self.HP = self.HP - attack_damage
 
-    # def collect_items(user_char,item,qty):
-    #     collecting = {'user' : user_char, 'item' : item, 'quantities' : qty}
-    #     # with open('inventory.json','r') as cl:
-    #     #     inv_data = json.load(cl)
-
-    #     # inv_data.append(collecting)
-
-    #     with open('inventory.json','w') as cl:
-    #         json.dumps(collecting.__dict__)
-
 # for database object calculate only NOT! for game
 class Game_items:
     def __init__(self, name, qty, space):
@@ -74,24 +64,68 @@ class Game_items:
             {'sword' : Game_items('Iron_sword',1,1)},
             {'sword' : Game_items('Diamond_sword',1,1)},
             {'sword' : Game_items('Platinum_sword',1,1)},
-            {'armor' : Game_items('Leather_armor',1,1)},
-            {'armor' : Game_items('Chain_armor',1,1)},
-            {'armor' : Game_items('Iron_armor',1,1)},
-            {'armor' : Game_items('Paladin_armor',1,2)},
-            {'armor' : Game_items('God_armor',1,4)}
+            {'armour' : Game_items('Leather_armour',1,1)},
+            {'armour' : Game_items('Chain_armour',1,1)},
+            {'armour' : Game_items('Iron_armour',1,1)},
+            {'armour' : Game_items('Paladin_armour',1,2)},
+            {'armour' : Game_items('God_armour',1,4)}
         ]
         # print(all_char[2]['monster'].name) #debugger
         return all_char, all_items
-
+# Hardcode สัดแต่มันทำไม่ทันอ่ะอือ userไม่รุ้หรอกทำเกมไม่ใช่ game engine วู้ว
 def collect_items(user_char,n,qty):
-    potion_item_name = Game_items.game_list()[1][n]['potion'].name
-    potion_item_qty = (Game_items.game_list()[1][n]['potion'].space)*qty
-    change_form = {'user' : user_char,'item' : potion_item_name, 'qty' : potion_item_qty}
-    with open('inventory.json','w') as cl:
-        json.dump(change_form,cl,indent=4)
-    return user_char,potion_item_name,qty
+    
+    with open('inventory.json','r') as cl:
+        data = json.load(cl)
+        print(n)
+        for i in range(len(data)):
+            if n >= 0 and n <= 4:
+                potion_item_name = Game_items.game_list()[1][n]['potion'].name
+                potion_item_qty = (Game_items.game_list()[1][n]['potion'].space)*qty
+                change_form_potion = {'user' : user_char,'item' : potion_item_name, 'qty' : potion_item_qty}
+                if data[i]["qty"] != 0:
+                    data[i]['qty'] += potion_item_qty
+                    break
+                else:
+                    data.append(change_form_potion)
+                    break
+            elif n <= 8:
+                sword_item_name = Game_items.game_list()[1][n]['sword'].name
+                sword_item_qty = (Game_items.game_list()[1][n]['sword'].space)*qty
+                change_form_sword = {'user' : user_char,'item' : sword_item_name, 'qty' : sword_item_qty}
+                if data[i]["qty"] != 0:
+                    data[i]['qty'] += sword_item_qty
+                    break
+                else:
+                    data.append(change_form_sword)
+                    break
+            elif n <= 13:
+                armour_item_name = Game_items.game_list()[1][n]['armour'].space
+                armour_item_qty = (Game_items.game_list()[1][n]['armour'].space)*qty
+                change_form_armour = {'user' : user_char,'item' : armour_item_name, 'qty' : armour_item_qty}
+                if data[i]["qty"] != 0:
+                    data[i]['qty'] += armour_item_qty
+                    break
+                else:
+                    data.append(change_form_armour)
+                    break      
+        else:
+            for j in range(len(data)):
+                if data[j]['item'] == potion_item_name: 
+                    data.append(change_form_potion)
+                    break
+                elif data[j]['item'] == sword_item_name:
+                    data.append(change_form_sword)
+                    break
+                elif data[j]['item'] == armour_item_name:
+                    data.append(change_form_armour)
+                    break
 
-print(Game_items.game_list()[0][1]['monster'].__dict__)
+    with open('inventory.json','w') as cl:
+        json.dump(data,cl,indent=4)
+    return user_char,qty
+
+# print(Game_items.game_list()[0][1]['monster'].__dict__)
 
 
 
