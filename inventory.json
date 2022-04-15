@@ -12,6 +12,11 @@
     {
         "user": "test",
         "item": "Red_potion",
-        "qty": 8
+        "qty": 11
+    },
+    {
+        "user": "test2",
+        "item": "Red_potion",
+        "qty": 2
     }
 ]
