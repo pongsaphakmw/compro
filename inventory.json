@@ -18,5 +18,15 @@
         "user": "test2",
         "item": "Red_potion",
         "qty": 2
+    },
+    {
+        "user": "test3",
+        "item": "Red_potion",
+        "qty": 1
+    },
+    {
+        "user": "test",
+        "item": "Diamond_sword",
+        "qty": 2
     }
 ]

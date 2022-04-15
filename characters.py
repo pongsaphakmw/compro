@@ -113,15 +113,16 @@ def collect_items(user_char,n,qty):
         else:
             for j in range(len(data)):
                 if n >=0 and n <=4:
-                    if data[j]['item'] == potion_item_name: 
+                    if data[j]['item'] != potion_item_name: 
                         data.append(change_form_potion)
                         break
                 elif n <= 8:
-                    if data[j]['item'] == sword_item_name:
+                    print(data[j]['item'])
+                    if data[j]['item'] != sword_item_name:
                         data.append(change_form_sword)
                         break
                 elif n <= 13:
-                    if data[j]['item'] == armour_item_name:
+                    if data[j]['item'] != armour_item_name:
                         data.append(change_form_armour)
                         break
 
