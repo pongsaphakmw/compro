@@ -1,5 +1,5 @@
 import login
-
+import characters,game_1
 class main_menu:
     def login_menu():
         print('\t\t\tWelcome to Nongbate in wonderland')
@@ -11,11 +11,9 @@ class main_menu:
             if choose == 1:
                 username = login.Register()
                 return username
-                # break
             elif choose == 2 :
                 username = login.Login()
                 return username
-                break
             else:    
                 print('Wrong input!')
                 continue
@@ -33,7 +31,7 @@ class main_menu:
                 print('inventory')
                 break
             elif check == '1':
-                print('game 1')
+                game_1.GAME_1()
                 break
             elif check == '2':
                 print('game 2')

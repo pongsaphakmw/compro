@@ -9,18 +9,14 @@ class Character:
 
     def Heal(self, heal):
         self.HP = self.HP + heal
-    def Inventory(self,inv_slots): # Inprogress it's hard ;-;
+    def Inventory(user_check):
+        print('You have : ')
         with open('inventory.json','r') as inv:
             data_inv = json.load(inv)
+            for i in range(len(data_inv)):
+                if data_inv[i]['user'] == user_check:
+                    print('\t',data_inv[i]['item'],data_inv[i]['qty'])
 
-        self.Slots = self.Slots - inv_slots
-
-        data_inv.append(self.Slots)
-
-        with open('inventory.json','w') as inv:
-            json.dump(data_inv,inv,indent=4)
-
-        return self(inv_slots)
     def Stamina(self,start_stamina):
         self.stamina = self.stamina + start_stamina
     def Sheild(self, add_sheild):

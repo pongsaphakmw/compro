@@ -78,10 +78,6 @@ def Login():
                     x+=1
                     if login_user in regex:
                         z+=1
-                    # if x <= len(dict):
-                    #     continue
-                    # else:
-                    #     break
             else:
                 continue
      
