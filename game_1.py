@@ -1,7 +1,8 @@
+import json
 import characters
 from random import randint
 player = characters.Game_items.game_list()
-def GAME_1():
+def GAME_1(user_name):
     print("Game 1 ....") 
     state = int(input("choose state :"))
     if state == 1:  
@@ -17,6 +18,21 @@ def GAME_1():
                 break
             elif player[0][1]['monster'].HP<=0:
                 print("won")
+                
+                with open('score.json','r') as sc:
+                    score_data = 0
+                    sc_data = json.load(sc)
+                    
+                    for i in range(len(sc_data)):
+                        if sc_data[i]['user'] == user_name:
+                            sc_data[i]['score'] += 10
+                            break
+                    else:
+                        score_data += 10
+                        score = {'user': user_name,'score':score_data}
+                        sc_data.append(score)
+                with open('score.json','w') as sc:
+                    json.dump(sc_data,sc,indent=4)
                 break
             Useskill=int(input("Use skill : "))
             print("Monster Use ")

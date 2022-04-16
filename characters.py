@@ -82,10 +82,6 @@ def collect_items(user_char,n,qty):
                 if data[i]["qty"] != 0 and data[i]['item'] == potion_item_name and data[i]['user'] == user_char:
                     data[i]['qty'] += potion_item_qty
                     break
-
-                # else:
-                #     data.append(change_form_potion)
-                #     break
             elif n <= 8:
                 sword_item_name = Game_items.game_list()[1][n]['sword'].name
                 sword_item_qty = (Game_items.game_list()[1][n]['sword'].space)*qty
@@ -93,19 +89,13 @@ def collect_items(user_char,n,qty):
                 if data[i]["qty"] != 0 and data[i]['item'] == sword_item_name and data[i]['user'] == user_char:
                     data[i]['qty'] += sword_item_qty
                     break
-                # else:
-                #     data.append(change_form_sword)
-                #     break
             elif n <= 13:
                 armour_item_name = Game_items.game_list()[1][n]['armour'].space
                 armour_item_qty = (Game_items.game_list()[1][n]['armour'].space)*qty
                 change_form_armour = {'user' : user_char,'item' : armour_item_name, 'qty' : armour_item_qty}
                 if data[i]["qty"] != 0 and data[i]['item'] == armour_item_name and data[i]['user'] == user_char:
                     data[i]['qty'] += armour_item_qty
-                    break
-                # else:
-                #     data.append(change_form_armour)
-                #     break      
+                    break 
         else:
             for j in range(len(data)):
                 if n >=0 and n <=4:
