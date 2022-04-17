@@ -42,10 +42,10 @@ class Game_items:
         # You can add characters here. I think stored in DB would be better
         all_char = [
         {'main_char' : Character('Nongbate', 100, 50, 4, 3)},
-        {'monster' : Character('คิดชื่อเอา', 30, 15, 0, 0)},
-        {'monster' : Character('คิดชื่อเอา2', 50, 30, 0, 0)},
-        {'monster' : Character('คิดเอา3', 30, 30, 0, 0)},
-        {'monster' : Character('คิดเอา4', 30, 30, 0, 0)}
+        {'monster' : Character('Soju', 30, 15, 0, 0)},
+        {'monster' : Character('Sang Som', 40, 30, 0, 0)},
+        {'monster' : Character('Kaw Noy', 50, 30, 0, 0)},
+        {'monster' : Character('Raw Pok', 60, 30, 0, 0)}
         ]
         # Edit game items here use class Game_items(ชื่อของ, จำนวน, ใช้พื้นที่เท่าไหร่)
         # เสร็จแล้วก็เก็บไว้เป็น dict ใน list(all_items)
