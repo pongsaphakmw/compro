@@ -116,6 +116,16 @@ def collect_items(user_char,n,qty):
         json.dump(data,cl,indent=4)
     return user_char,qty
 
+def use_potion(potion_name,qty,user_name):
+    with open('inventory.json','r') as uspo:
+        uspo_data = json.load(uspo)
+        for i in range(len(uspo_data)):
+            if uspo_data[i]['user'] == user_name:
+                if uspo_data[i]['item'] == potion_name:
+                    uspo_data[i]['qty'] = uspo_data[i]['qty'] - qty
+                #มาทำต่อน๊ะจ๊ะ
+
+
 # print(Game_items.game_list()[0][1]['monster'].__dict__)
 
 

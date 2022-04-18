@@ -15,8 +15,12 @@ def GAME_1(user_name):
             print("%s  have HP %s "%(player[0][1]['monster'].name,player[0][1]['monster'].HP))     
             if player[0][0]['main_char'].HP<=0:
                 print("lose")
+                player[0][0]['main_char'].Heal(100)
+                player[0][1]['monster'].Heal(30)
                 break
             elif player[0][1]['monster'].HP<=0:
+                player[0][0]['main_char'].Heal(100)
+                player[0][1]['monster'].Heal(30)
                 print("won")
                 
                 with open('score.json','r') as sc:
@@ -86,10 +90,30 @@ def GAME_1(user_name):
             print("%s  have HP %s "%(player[0][2]['monster'].name,player[0][2]['monster'].HP))     
             if player[0][0]['main_char'].HP<=0:
                 print("lose")
+                player[0][0]['main_char'].Heal(100)
+                player[0][2]['monster'].Heal(40)
                 break
             elif player[0][2]['monster'].HP<=0:
+                player[0][0]['main_char'].Heal(100)
+                player[0][2]['monster'].Heal(40)
                 print("won")
+
+                with open('score.json','r') as sc:
+                    score_data = 0
+                    sc_data = json.load(sc)
+                    
+                    for i in range(len(sc_data)):
+                        if sc_data[i]['user'] == user_name:
+                            sc_data[i]['score'] += 10
+                            break
+                    else:
+                        score_data += 10
+                        score = {'user': user_name,'score':score_data}
+                        sc_data.append(score)
+                with open('score.json','w') as sc:
+                    json.dump(sc_data,sc,indent=4)
                 break
+                
             Useskill=int(input("Use skill : "))
             print("Monster Use ")
         
@@ -141,10 +165,28 @@ def GAME_1(user_name):
             print("%s your  HP is %s "%(player[0][0]['main_char'].name,player[0][0]['main_char'].HP))
             print("%s  have HP %s "%(player[0][3]['monster'].name,player[0][3]['monster'].HP))     
             if player[0][0]['main_char'].HP<=0:
+                player[0][0]['main_char'].Heal(100)
+                player[0][3]['monster'].Heal(50)
                 print("lose")
                 break
             elif player[0][3]['monster'].HP<=0:
+                player[0][0]['main_char'].Heal(100)
+                player[0][3]['monster'].Heal(50)
                 print("won")
+                with open('score.json','r') as sc:
+                    score_data = 0
+                    sc_data = json.load(sc)
+                    
+                    for i in range(len(sc_data)):
+                        if sc_data[i]['user'] == user_name:
+                            sc_data[i]['score'] += 10
+                            break
+                    else:
+                        score_data += 10
+                        score = {'user': user_name,'score':score_data}
+                        sc_data.append(score)
+                with open('score.json','w') as sc:
+                    json.dump(sc_data,sc,indent=4)
                 break
             Useskill=int(input("Use skill : "))
             print("Monster Use ")
