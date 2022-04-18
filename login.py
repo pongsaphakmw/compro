@@ -8,9 +8,9 @@ Check e-mail
 '''
 '''
 **************** Important Note! ****************
-Don't change anything
+Don't change anything if u don't know how to use stackoverflow XD
 '''
-db_user = []
+
 def Register():
     
     regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
@@ -25,12 +25,16 @@ def Register():
                 enc = password2.encode()
                 hash1 = hashlib.md5(enc).hexdigest()
                 user_data = {'mail':email,'user':username,'pass':hash1}
-                db_user.append(user_data)
                 
                 with open('user1.json','r') as f:
                     data = json.load(f)
-                
-                data.append(user_data)
+                    for i in range(len(data)):
+                        if email == data[i]['mail'] or username == data[i]['user']:
+                            print('email or user name is unaviable try again!')
+                            Register()
+                            # ตื่นมาแก้บัคนำเด้อชาย
+                    else:
+                        data.append(user_data)
 
                 with open('user1.json','w') as f:
                     json.dump(data, f, indent=4)
@@ -65,7 +69,6 @@ def Login():
                 check_user = dict[x]['user']
                 check_mail = dict[x]['mail']
                 check_pass = dict[x]['pass']
-                # Bad Big(o)
                 # print(check_pass)
                 if login_user == check_user or login_user == check_mail :
                     if auth_hash == check_pass:

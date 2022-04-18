@@ -1,12 +1,14 @@
+import json
 import login
-import characters,game_1,game_2
+import characters,game_1,game_2,game_3
 
 def login_menu():
     print('\t\t\tWelcome to Nongbate in wonderland')
     print('\t\tRegister type : 1')
     print('\t\tLogin type : 2')
     while 1:
-        choose = int(input('\t\tEnter your choose here : '))
+        choose = input('\t\tEnter your choose here : ')
+        choose = int(choose)
         print('\t----------------------------------------------')
         if choose == 1:
             username = login.Register()
@@ -18,8 +20,18 @@ def login_menu():
             print('Wrong input!')
             continue
     print('\t----------------------------------------------')
+
+def score_board(user_score):
+    with open('score.json','r') as sb:
+        sb_data = json.load(sb)
+        print('\t----------------------------------------------')
+        print('\t\tScore board!!')
+        for i in range(len(sb_data)):
+            print(sb_data[i]['user'],'\t\t\t\t',sb_data[i]['score'])
+        print('\t----------------------------------------------')
          
 def game_menu():
+    username = login_menu()
     while 1:
         print('\t\t\tChoose mini games to play')
         print('\t\tGame 1 : Type 1')
@@ -29,26 +41,30 @@ def game_menu():
         print('\t\t\t\t\t\t\t\t\tType "i" to open inventory')
         check = input('Type here : ').lower()
         if check == 'i':
-            print('inventory')
-            break
+            characters.Character.Inventory(username)
+            
         elif check == '1':
-            game_1.GAME_1(login_menu())
+            game_1.GAME_1(username)
             check_quit = input('Type "Q" to exit : ').lower()
             if check_quit == 'q':
+                print('Bye!')
                 break
             else: continue
         elif check == '2':
-            game_2.GAME_2(login_menu())
+            game_2.GAME_2(username)
             check_quit = input('Type "Q" to exit : ').lower()
             if check_quit == 'q':
-                print('Bye')
+                print('Bye!')
                 break
             else: continue
         elif check == '3':
-            print('game 3')
-            break
+            game_3.GAME_3(username)
+            check_quit = input('Type "Q" to exit : ').lower()
+            if check_quit == 'q':
+                print('Bye!')
+                break
         elif check == 's':
-           print('Score board')
+           score_board(username)
         else:
             print('Wrong input')
             continue

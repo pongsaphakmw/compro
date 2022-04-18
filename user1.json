@@ -33,5 +33,15 @@
         "mail": "test7@gmail.com",
         "user": "test7",
         "pass": "e10adc3949ba59abbe56e057f20f883e"
+    },
+    {
+        "mail": "test8@gmail.com",
+        "user": "test8",
+        "pass": "25d55ad283aa400af464c76d713c07ad"
+    },
+    {
+        "mail": "test6@gmail.com",
+        "user": "test6",
+        "pass": "e10adc3949ba59abbe56e057f20f883e"
     }
 ]
