@@ -6,6 +6,10 @@ class Character:
         self.stamina = stamina
         self.Slots = Slots
         self.sheilds = sheilds
+        self.reset(HP)
+
+    def reset(self,HP):
+        self.HP = HP
 
     def Heal(self, heal):
         self.HP = self.HP + heal

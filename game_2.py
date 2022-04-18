@@ -1,5 +1,4 @@
 import json
-from Projectcom.characters import Character
 import characters
 from random import randint
 def GAME_2(user_name):
@@ -10,13 +9,15 @@ def GAME_2(user_name):
     if state == 1:
         print("Welcome to State 1")
         print("Calculate the equation to get rid of monsters!!")
+        MaxHP_main = player[0][0]['main_char'].HP
+        MaxHP_monster = player[0][1]['monster'].HP
         while 1:
             print("%s your  HP is %s "%(player[0][0]['main_char'].name,player[0][0]['main_char'].HP))
             print("%s  have HP %s "%(player[0][1]['monster'].name,player[0][1]['monster'].HP))
             if player[0][0]['main_char'].HP<=0:
                 print("lose")
-                player[0][0]['main_char'].Heal(100)
-                player[0][1]['monster'].Heal(30)
+                player[0][0]['main_char'].reset(MaxHP_main)
+                player[0][1]['monster'].reset(MaxHP_monster)
                 break
             elif player[0][0]['main_char'].HP <=50:
                 print('Need healing?')
@@ -31,8 +32,8 @@ def GAME_2(user_name):
                             # น่าจะบัคเดี๋ยวมาแก้
             elif player[0][1]['monster'].HP<=0:
                 print("won")
-                player[0][0]['main_char'].Heal(100)
-                player[0][1]['monster'].Heal(30)
+                player[0][0]['main_char'].reset(MaxHP_main)
+                player[0][1]['monster'].reset(MaxHP_monster)
                 with open('score.json','r') as sc:
                     score_data = 0
                     sc_data = json.load(sc)
@@ -69,18 +70,20 @@ def GAME_2(user_name):
     elif state == 2:
         print("Welcome to State 2")
         print("Calculate the equation to get rid of monsters!!")
+        MaxHP_main = player[0][0]['main_char'].HP
+        MaxHP_monster = player[0][2]['monster'].HP
         while 1:
             print("%s your  HP is %s "%(player[0][0]['main_char'].name,player[0][0]['main_char'].HP))
             print("%s  have HP %s "%(player[0][2]['monster'].name,player[0][2]['monster'].HP))
             if player[0][0]['main_char'].HP<=0:
                 print("lose")
-                player[0][0]['main_char'].Heal(100)
-                player[0][2]['monster'].Heal(40)
+                player[0][0]['main_char'].reset(MaxHP_main)
+                player[0][2]['monster'].reset(MaxHP_monster)
                 break
             elif player[0][2]['monster'].HP<=0:
                 print("won")
-                player[0][0]['main_char'].Heal(100)
-                player[0][2]['monster'].Heal(40)
+                player[0][0]['main_char'].reset(MaxHP_main)
+                player[0][2]['monster'].reset(MaxHP_monster)
                 with open('score.json','r') as sc:
                     score_data = 0
                     sc_data = json.load(sc)
@@ -117,16 +120,20 @@ def GAME_2(user_name):
     elif state == 3:
         print("Welcome to State 3")
         print("Calculate the equation to get rid of monsters!!")
+        MaxHP_main = player[0][0]['main_char'].HP
+        MaxHP_monster = player[0][3]['monster'].HP
         while 1:
             print("%s your  HP is %s "%(player[0][0]['main_char'].name,player[0][0]['main_char'].HP))
             print("%s  have HP %s "%(player[0][4]['monster'].name,player[0][4]['monster'].HP))
             if player[0][0]['main_char'].HP<=0:
                 print("lose")
+                player[0][0]['main_char'].reset(MaxHP_main)
+                player[0][3]['monster'].reset(MaxHP_monster)
                 break
             elif player[0][4]['monster'].HP<=0:
                 print("won")
-                player[0][0]['main_char'].Heal(100)
-                player[0][3]['monster'].Heal(50)
+                player[0][0]['main_char'].reset(MaxHP_main)
+                player[0][3]['monster'].reset(MaxHP_monster)
                 with open('score.json','r') as sc:
                     score_data = 0
                     sc_data = json.load(sc)

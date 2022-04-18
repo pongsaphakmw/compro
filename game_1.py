@@ -10,17 +10,19 @@ def GAME_1(user_name):
         print("Attack  = 1")
         print("Counter = 2")
         print("Magic   = 3")
+        MaxHP_main = player[0][0]['main_char'].HP
+        MaxHP_monster = player[0][1]['monster'].HP
         while 1:
             print("%s your  HP is %s "%(player[0][0]['main_char'].name,player[0][0]['main_char'].HP))
             print("%s  have HP %s "%(player[0][1]['monster'].name,player[0][1]['monster'].HP))     
             if player[0][0]['main_char'].HP<=0:
                 print("lose")
-                player[0][0]['main_char'].Heal(100)
-                player[0][1]['monster'].Heal(30)
+                player[0][0]['main_char'].reset(MaxHP_main)
+                player[0][1]['monster'].reset(MaxHP_monster)
                 break
             elif player[0][1]['monster'].HP<=0:
-                player[0][0]['main_char'].Heal(100)
-                player[0][1]['monster'].Heal(30)
+                player[0][0]['main_char'].reset(MaxHP_main)
+                player[0][1]['monster'].reset(MaxHP_monster)
                 print("won")
                 
                 with open('score.json','r') as sc:
@@ -85,17 +87,19 @@ def GAME_1(user_name):
         print("Attack  = 1")
         print("Counter = 2")
         print("Magic   = 3")
+        MaxHP_main = player[0][0]['main_char'].HP
+        MaxHP_monster = player[0][2]['monster'].HP
         while 1:
             print("%s your  HP is %s "%(player[0][0]['main_char'].name,player[0][0]['main_char'].HP))
             print("%s  have HP %s "%(player[0][2]['monster'].name,player[0][2]['monster'].HP))     
             if player[0][0]['main_char'].HP<=0:
                 print("lose")
-                player[0][0]['main_char'].Heal(100)
-                player[0][2]['monster'].Heal(40)
+                player[0][0]['main_char'].reset(MaxHP_main)
+                player[0][2]['monster'].reset(MaxHP_monster)
                 break
             elif player[0][2]['monster'].HP<=0:
-                player[0][0]['main_char'].Heal(100)
-                player[0][2]['monster'].Heal(40)
+                player[0][0]['main_char'].reset(MaxHP_main)
+                player[0][2]['monster'].reset(MaxHP_monster)
                 print("won")
 
                 with open('score.json','r') as sc:
@@ -161,17 +165,19 @@ def GAME_1(user_name):
         print("Attack  = 1")
         print("Counter = 2")
         print("Magic   = 3")
+        MaxHP_main = player[0][0]['main_char'].HP
+        MaxHP_monster = player[0][3]['monster'].HP
         while 1:
             print("%s your  HP is %s "%(player[0][0]['main_char'].name,player[0][0]['main_char'].HP))
             print("%s  have HP %s "%(player[0][3]['monster'].name,player[0][3]['monster'].HP))     
             if player[0][0]['main_char'].HP<=0:
-                player[0][0]['main_char'].Heal(100)
-                player[0][3]['monster'].Heal(50)
+                player[0][0]['main_char'].reset(MaxHP_main)
+                player[0][3]['monster'].reset(MaxHP_monster)
                 print("lose")
                 break
             elif player[0][3]['monster'].HP<=0:
-                player[0][0]['main_char'].Heal(100)
-                player[0][3]['monster'].Heal(50)
+                player[0][0]['main_char'].reset(MaxHP_main)
+                player[0][3]['monster'].reset(MaxHP_monster)
                 print("won")
                 with open('score.json','r') as sc:
                     score_data = 0
