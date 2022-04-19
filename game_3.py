@@ -1,5 +1,6 @@
 import json
 import characters
+from random import randint
 import random
 def GAME_3(user_name):
     player = characters.Game_items.game_list()
@@ -22,11 +23,25 @@ def GAME_3(user_name):
                 player[0][0]['main_char'].reset(MaxHP_main)
                 player[0][1]['monster'].reset(MaxHP_monster)
                 break
+            elif player[0][0]['main_char'].HP <=50:
+                print('Need healing?')
+                print('Open your inventory to heal')
+                inv = input('Type "I" to open inventory : ').lower()
+                if inv == 'i':
+                    char_inv = characters.Character.Inventory(user_name)
+                    choose = input('Choose your potion by number : ')
+                    choose = int(choose)
+                    for i in range(len(char_inv)):
+                        if choose == i:
+                            player[0][0]['main_char'].use_potion(char_inv[i]['item'],1,user_name)
+                            print("%s your  HP is %s "%(player[0][0]['main_char'].name,player[0][0]['main_char'].HP))
+                            # แก้บัคได้แล้วกุแม่งเก่งว่ะ
             elif player[0][1]['monster'].HP<=0:
                 player[0][0]['main_char'].reset(MaxHP_main)
                 player[0][1]['monster'].reset(MaxHP_monster)
                 print("won")
-                
+                x = randint(0,4);y = randint(0,2)
+                characters.collect_items(user_name,x,y)
                 with open('score.json','r') as sc:
                     score_data = 0
                     sc_data = json.load(sc)
@@ -39,6 +54,9 @@ def GAME_3(user_name):
                         score_data += 10
                         score = {'user': user_name,'score':score_data}
                         sc_data.append(score)
+                with open('score.json','w') as sc:
+                    json.dump(sc_data,sc,indent=4)
+                break
             x=random.choice(items)
             if  x=='Which nation was the first to sail?':
                 print("Which nation was the first to sail?")

@@ -30,6 +30,39 @@ class Character:
         self.sheilds = self.sheilds + add_sheild
     def Attack(self, attack_damage):
         self.HP = self.HP - attack_damage
+    def use_potion(self,potion_name,qty,user_name):
+        MaxHP = Game_items.game_list()[0][0]['main_char'].HP
+        with open('inventory.json','r') as uspo:
+            uspo_data = json.load(uspo)
+            for i in range(len(uspo_data)):
+                if uspo_data[i]['user'] == user_name:
+                    if uspo_data[i]['item'] == potion_name:
+                        # uspo_data[i]['qty'] = uspo_data[i]['qty'] - qty
+                        if potion_name == 'Blue_potion':
+                            self.Heal(10)
+                            uspo_data[i]['qty'] = uspo_data[i]['qty'] - qty
+                            break
+                        elif potion_name == 'Yellow_potion':
+                            self.Heal(20)
+                            uspo_data[i]['qty'] = uspo_data[i]['qty'] - qty
+                            break
+                        elif potion_name == 'Red_potion':
+                            self.Heal(30)
+                            uspo_data[i]['qty'] = uspo_data[i]['qty'] - qty
+                            break
+                        elif potion_name == 'White_potion':
+                            self.Heal(40)
+                            uspo_data[i]['qty'] = uspo_data[i]['qty'] - qty
+                            break
+                        elif potion_name == '????':
+                            self.reset(MaxHP)
+                            uspo_data[i]['qty'] = uspo_data[i]['qty'] - qty
+                            break
+                        else:
+                            print("you don't have that item !")
+        
+        with open('inventory.json','w') as uspo:
+            json.dump(uspo_data,uspo,indent=4)
 
 # for database obiect calculate only NOT! for game
 class Game_items:
@@ -79,7 +112,6 @@ def collect_items(user_char,n,qty):
     
     with open('inventory.json','r') as cl:
         data = json.load(cl)
-        print(n)
         for i in range(len(data)):
             if n >= 0 and n <= 4:
                 potion_item_name = Game_items.game_list()[1][n]['potion'].name
@@ -121,36 +153,10 @@ def collect_items(user_char,n,qty):
 
     with open('inventory.json','w') as cl:
         json.dump(data,cl,indent=4)
+    
     return user_char,qty
 # Next patch XD!
-def use_potion(potion_name,qty,user_name):
-    MaxHP = Game_items.game_list()[0][0]['main_char'].HP
-    main_char = Game_items.game_list()[0][0]['main_char']
-    print(potion_name)
-    with open('inventory.json','r') as uspo:
-        uspo_data = json.load(uspo)
-        for i in range(len(uspo_data)):
-            if uspo_data[i]['user'] == user_name:
-                if uspo_data[i]['item'] == potion_name:
-                    print(uspo_data[i]['item'])
-                    # uspo_data[i]['qty'] = uspo_data[i]['qty'] - qty
-                    if potion_name == 'Blue_potion':
-                        main_char.Heal(10)
-                        uspo_data[i]['qty'] = uspo_data[i]['qty'] - qty
-                    elif potion_name == 'Yellow_potion':
-                        main_char.Heal(20)
-                        uspo_data[i]['qty'] = uspo_data[i]['qty'] - qty
-                    elif potion_name == 'Red_potion':
-                        main_char.Heal(30)
-                        uspo_data[i]['qty'] = uspo_data[i]['qty'] - qty
-                    elif potion_name == 'White_potion':
-                        main_char.Heal(40)
-                        uspo_data[i]['qty'] = uspo_data[i]['qty'] - qty
-                    elif potion_name == '????':
-                        main_char.reset(MaxHP)
-                        uspo_data[i]['qty'] = uspo_data[i]['qty'] - qty
-                    else:
-                        print("you don't have that item !")
+
                 
 
 
