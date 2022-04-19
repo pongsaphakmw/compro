@@ -7,9 +7,11 @@ def GAME_1(user_name):
     state = int(input("choose state :"))
     if state == 1:  
         print("Welcome to State 1")
-        print("Attack  = 1")
-        print("Counter = 2")
-        print("Magic   = 3")
+        print('\t────────────────────────────────────────────────────────────────')
+        print("\t\tAttack  = 1")
+        print("\t\tCounter = 2")
+        print("\t\tMagic   = 3")
+        print('\t────────────────────────────────────────────────────────────────')
         MaxHP_main = player[0][0]['main_char'].HP
         MaxHP_monster = player[0][1]['monster'].HP
         while 1:
@@ -41,52 +43,65 @@ def GAME_1(user_name):
                     json.dump(sc_data,sc,indent=4)
                 break
             Useskill=int(input("Use skill : "))
+            print('\t────────────────────────────────────────────────────────────────')
             print("Monster Use ")
-        
             for i in range(1): 
                 r = randint(1,3)
                 if r == 1:
-                    print("Attack")    
+                    print("\t\tAttack")
+                    print('\t────────────────────────────────────────────────────────────────')    
                 elif r == 2 :
-                    print ("Counter")
+                    print ("\t\tCounter")
+                    print('\t────────────────────────────────────────────────────────────────')
                 elif r == 3 :
-                    print ("Magic")
+                    print ("\t\tMagic")
+                    print('\t────────────────────────────────────────────────────────────────')
             if Useskill == 1 and r == 1:
                 player[0][1]['monster'].name,player[0][1]['monster'].Attack(0)
-                print("Draw")
+                print("\t\tDraw")
+                print('\t────────────────────────────────────────────────────────────────')
             elif Useskill == 1 and r == 2:
                 player[0][0]['main_char'].name,player[0][0]['main_char'].Attack(10)
-                print("Got damage")
+                print("\t\tGot damage")
+                print('\t────────────────────────────────────────────────────────────────')
             elif Useskill == 1 and r == 3:
                 player[0][1]['monster'].name,player[0][1]['monster'].Attack(10)
-                print("you have done damage")           
+                print("\t\tyou have done damage")    
+                print('\t────────────────────────────────────────────────────────────────')       
             elif Useskill == 2 and r == 1:
                 
                 player[0][1]['monster'].name,player[0][1]['monster'].Attack(10)
-                print("you have done damage")
+                print("\t\tyou have done damage")
+                print('\t────────────────────────────────────────────────────────────────')
             elif Useskill == 2 and r == 2:
                 player[0][1]['monster'].name,player[0][1]['monster'].Attack(0)
                 
-                print("Draw")
+                print("\t\tDraw")
+                print('\t────────────────────────────────────────────────────────────────')
             elif Useskill == 2 and r == 3:
                 player[0][0]['main_char'].name,player[0][0]['main_char'].Attack(10)         
-                print("Got damage")
+                print("\t\tGot damage")
+                print('\t────────────────────────────────────────────────────────────────')
             elif Useskill == 3 and r == 1:                  
                 player[0][0]['main_char'].name,player[0][0]['main_char'].Attack(10)
-                print("Got damage")
+                print("\t\tGot damage")
+                print('\t────────────────────────────────────────────────────────────────')
             elif Useskill == 3 and r == 2:      
                 player[0][1]['monster'].name,player[0][1]['monster'].Attack(10)   
-                print("you have done damage")         
+                print("\t\tyou have done damage")
+                print('\t────────────────────────────────────────────────────────────────')         
             elif Useskill == 3 and r == 3:
                 player[0][1]['monster'].name,player[0][1]['monster'].Attack(0)
-                print("Draw")
+                print("\t\tDraw")
+                print('\t────────────────────────────────────────────────────────────────')
             elif Useskill >=4:
                 break
     elif state == 2:  
         print("Welcome to State 2")
-        print("Attack  = 1")
-        print("Counter = 2")
-        print("Magic   = 3")
+        print("\t\tAttack  = 1")
+        print("\t\tCounter = 2")
+        print("\t\tMagic   = 3")
+        print('\t────────────────────────────────────────────────────────────────')
         MaxHP_main = player[0][0]['main_char'].HP
         MaxHP_monster = player[0][2]['monster'].HP
         while 1:
@@ -119,52 +134,63 @@ def GAME_1(user_name):
                 break
                 
             Useskill=int(input("Use skill : "))
+            print('\t────────────────────────────────────────────────────────────────')
             print("Monster Use ")
         
             for i in range(1): 
                 r = randint(1,3)
                 if r == 1:
-                    print("Attack")    
+                    print("\t\tAttack")    
                 elif r == 2 :
-                    print ("Counter")
+                    print ("\t\tCounter")
                 elif r == 3 :
-                    print ("Magic")
+                    print ("\t\tMagic")
             if Useskill == 1 and r == 1:
                 player[0][2]['monster'].name,player[0][2]['monster'].Attack(0)
-                print("Draw")
+                print("\t\tDraw")
+                print('\t────────────────────────────────────────────────────────────────')
             elif Useskill == 1 and r == 2:
                 player[0][0]['main_char'].name,player[0][0]['main_char'].Attack(10)
-                print("Got damage")
+                print("\t\tGot damage")
+                print('\t────────────────────────────────────────────────────────────────')
             elif Useskill == 1 and r == 3:
                 player[0][2]['monster'].name,player[0][2]['monster'].Attack(10)
-                print("you have done damage")           
+                print("\t\tyou have done damage")      
+                print('\t────────────────────────────────────────────────────────────────')     
             elif Useskill == 2 and r == 1:
                 
                 player[0][2]['monster'].name,player[0][2]['monster'].Attack(10)
-                print("you have done damage")
+                print("\t\tyou have done damage")
+                print('\t────────────────────────────────────────────────────────────────')
             elif Useskill == 2 and r == 2:
                 player[0][2]['monster'].name,player[0][2]['monster'].Attack(0)
                 
-                print("Draw")
+                print("\t\tDraw")
+                print('\t────────────────────────────────────────────────────────────────')
             elif Useskill == 2 and r == 3:
                 player[0][0]['main_char'].name,player[0][0]['main_char'].Attack(10)         
-                print("Got damage")
+                print("\t\tGot damage")
+                print('\t────────────────────────────────────────────────────────────────')
             elif Useskill == 3 and r == 1:                  
                 player[0][0]['main_char'].name,player[0][0]['main_char'].Attack(10)
-                print("Got damage")
+                print("\t\tGot damage")
+                print('\t────────────────────────────────────────────────────────────────')
             elif Useskill == 3 and r == 2:      
                 player[0][2]['monster'].name,player[0][2]['monster'].Attack(10)   
-                print("you have done damage")         
+                print("\t\tyou have done damage")     
+                print('\t────────────────────────────────────────────────────────────────')    
             elif Useskill == 3 and r == 3:
                 player[0][2]['monster'].name,player[0][2]['monster'].Attack(0)
-                print("Draw")
+                print("\t\tDraw")
+                print('\t────────────────────────────────────────────────────────────────')
             elif Useskill >=4:
                 break
     elif state == 3:  
         print("Welcome to State 3")
-        print("Attack  = 1")
-        print("Counter = 2")
-        print("Magic   = 3")
+        print("\t\tAttack  = 1")
+        print("\t\tCounter = 2")
+        print("\t\tMagic   = 3")
+        print('\t────────────────────────────────────────────────────────────────')
         MaxHP_main = player[0][0]['main_char'].HP
         MaxHP_monster = player[0][3]['monster'].HP
         while 1:
@@ -195,44 +221,57 @@ def GAME_1(user_name):
                     json.dump(sc_data,sc,indent=4)
                 break
             Useskill=int(input("Use skill : "))
+            print('\t────────────────────────────────────────────────────────────────')
             print("Monster Use ")
         
             for i in range(1): 
                 r = randint(1,3)
                 if r == 1:
-                    print("Attack")    
+                    print("Attack")
+                    print('\t────────────────────────────────────────────────────────────────')    
                 elif r == 2 :
                     print ("Counter")
+                    print('\t────────────────────────────────────────────────────────────────')
                 elif r == 3 :
                     print ("Magic")
+                    print('\t────────────────────────────────────────────────────────────────')
             if Useskill == 1 and r == 1:
                 player[0][3]['monster'].name,player[0][3]['monster'].Attack(0)
-                print("Draw")
+                print("\t\tDraw")
+                print('\t────────────────────────────────────────────────────────────────')
             elif Useskill == 1 and r == 2:
                 player[0][0]['main_char'].name,player[0][0]['main_char'].Attack(12)
-                print("Got damage")
+                print("\t\tGot damage")
+                print('\t────────────────────────────────────────────────────────────────')
             elif Useskill == 1 and r == 3:
                 player[0][3]['monster'].name,player[0][3]['monster'].Attack(10)
-                print("you have done damage")           
+                print("\t\tyou have done damage")
+                print('\t────────────────────────────────────────────────────────────────')           
             elif Useskill == 2 and r == 1:
                 
                 player[0][3]['monster'].name,player[0][3]['monster'].Attack(10)
-                print("you have done damage")
+                print("\t\tyou have done damage")
+                print('\t────────────────────────────────────────────────────────────────')
             elif Useskill == 2 and r == 2:
                 player[0][3]['monster'].name,player[0][3]['monster'].Attack(0)
                 
-                print("Draw")
+                print("\t\tDraw")
+                print('\t────────────────────────────────────────────────────────────────')
             elif Useskill == 2 and r == 3:
                 player[0][0]['main_char'].name,player[0][0]['main_char'].Attack(12)         
-                print("Got damage")
+                print("\t\tGot damage")
+                print('\t────────────────────────────────────────────────────────────────')
             elif Useskill == 3 and r == 1:                  
                 player[0][0]['main_char'].name,player[0][0]['main_char'].Attack(12)
-                print("Got damage")
+                print("\t\tGot damage")
+                print('\t────────────────────────────────────────────────────────────────')
             elif Useskill == 3 and r == 2:      
                 player[0][3]['monster'].name,player[0][3]['monster'].Attack(10)   
-                print("you have done damage")         
+                print("\t\tyou have done damage")
+                print('\t────────────────────────────────────────────────────────────────')         
             elif Useskill == 3 and r == 3:
                 player[0][3]['monster'].name,player[0][3]['monster'].Attack(0)
-                print("Draw")
+                print("\t\tDraw")
+                print('\t────────────────────────────────────────────────────────────────')
             elif Useskill >=4:
                 break

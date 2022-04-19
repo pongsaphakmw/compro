@@ -20,7 +20,6 @@ def Register():
             username = input('Enter your username here : ')
             password = input('Enter your pass word : ')
             password2 = input('Confirm your pass word : ')
-            
                 
             if password2 == password:
                 if (re.fullmatch(regex, email)):
@@ -30,8 +29,10 @@ def Register():
                     for i in range(len(data)):
                         if data[i]['mail'] == email or data[i]['user'] == username:
                             print('email or user name is unaviable try again!')
-                            Register()
                             user_data = {'mail':email,'user':username,'pass':hash1}
+                            Register()
+                            #บัคได้ไงวะ
+                            
                     else:
                         user_data = {'mail':email,'user':username,'pass':hash1}
                         data.append(user_data)
