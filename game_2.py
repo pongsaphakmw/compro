@@ -21,17 +21,20 @@ def GAME_2(user_name):
                 player[0][0]['main_char'].reset(MaxHP_main)
                 player[0][1]['monster'].reset(MaxHP_monster)
                 break
-            elif player[0][0]['main_char'].HP <=50:
-                print('Need healing?')
-                print('Open your inventory to heal')
-                inv = input('Type "I" to open inventory').lower()
-                if inv == 'i':
-                    char_inv = characters.Character.Inventory(user_name)
-                    choose = input('Choose your potion by number : ')
-                    for i in range(len(char_inv)):
-                        if choose == i:
-                            characters.use_potion(char_inv[i]['item'],1,user_name)
-                            # น่าจะบัคเดี๋ยวมาแก้
+            # Next patch XD!
+            # elif player[0][0]['main_char'].HP <=50:
+            #     print('Need healing?')
+            #     print('Open your inventory to heal')
+            #     inv = input('Type "I" to open inventory : ').lower()
+            #     if inv == 'i':
+            #         char_inv = characters.Character.Inventory(user_name)
+            #         choose = input('Choose your potion by number : ')
+            #         choose = int(choose)
+            #         for i in range(len(char_inv)):
+            #             if choose == i:
+            #                 characters.use_potion(char_inv[i]['item'],1,user_name)
+            #                 print(player[0][0]['main_char'].HP)
+            #                 # น่าจะบัคเดี๋ยวมาแก้
             elif player[0][1]['monster'].HP<=0:
                 print("\twon")
                 player[0][0]['main_char'].reset(MaxHP_main)
@@ -70,7 +73,7 @@ def GAME_2(user_name):
                 elif answer != randomproblem:
                     print("\tTry again!!!")
                     print("------------------------------")
-                    player[0][0]['main_char'].name,player[0][0]['main_char'].Attack(10)
+                    player[0][0]['main_char'].name,player[0][0]['main_char'].Attack(50)
                     print("\tGot damage!!!")
                     print("------------------------------")
                     break

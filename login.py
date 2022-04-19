@@ -12,39 +12,38 @@ Don't change anything if u don't know how to use stackoverflow XD
 '''
 
 def Register():
-    
-    regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
-    while 1:
-        email = input('Enter your email here : ')
-        username = input('Enter your username here : ')
-        password = input('Enter your pass word : ')
-        password2 = input('Confirm your pass word : ')
-        
-        if password2 == password:
-            if (re.fullmatch(regex, email)):
-                enc = password2.encode()
-                hash1 = hashlib.md5(enc).hexdigest()
-                user_data = {'mail':email,'user':username,'pass':hash1}
+    with open('user1.json','r') as f:
+        data = json.load(f)
+        regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+        while 1:
+            email = input('Enter your email here : ')
+            username = input('Enter your username here : ')
+            password = input('Enter your pass word : ')
+            password2 = input('Confirm your pass word : ')
+            
                 
-                with open('user1.json','r') as f:
-                    data = json.load(f)
+            if password2 == password:
+                if (re.fullmatch(regex, email)):
+                    enc = password2.encode()
+                    hash1 = hashlib.md5(enc).hexdigest()
+                    
                     for i in range(len(data)):
-                        if email == data[i]['mail'] or username == data[i]['user']:
+                        if data[i]['mail'] == email or data[i]['user'] == username:
                             print('email or user name is unaviable try again!')
                             Register()
-                            # ตื่นมาแก้บัคนำเด้อชาย
+                            user_data = {'mail':email,'user':username,'pass':hash1}
                     else:
+                        user_data = {'mail':email,'user':username,'pass':hash1}
                         data.append(user_data)
-
-                with open('user1.json','w') as f:
-                    json.dump(data, f, indent=4)
-                return user_data
+                        with open('user1.json','w') as f:
+                            json.dump(data, f, indent=4)
+                        return user_data
+                else:
+                    print('Wrong E-mail!')
+                    continue
             else:
-                print('Wrong E-mail!')
-                continue
-        else:
-            print('Wrong password!')
-            continue    
+                print('Wrong password!')
+                continue    
 
 def Login():
     regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'

@@ -15,11 +15,14 @@ class Character:
         self.HP = self.HP + heal
     def Inventory(user_check):
         print('You have : ')
+        vir_inv = []
         with open('inventory.json','r') as inv:
             data_inv = json.load(inv)
             for i in range(len(data_inv)):
                 if data_inv[i]['user'] == user_check:
                     print('\t',data_inv[i]['item'],data_inv[i]['qty'])
+                    vir_inv.append(data_inv[i])
+            return vir_inv
 
     def Stamina(self,start_stamina):
         self.stamina = self.stamina + start_stamina
@@ -71,7 +74,7 @@ class Game_items:
         ]
         # print(all_char[2]['monster'].name) #debugger
         return all_char, all_items
-# Hardcode สัดแต่มันทำไม่ทันอ่ะอือ userไม่รุ้หรอกทำเกมไม่ใช่ game engine วู้ว
+# Next patch XD!
 def collect_items(user_char,n,qty):
     
     with open('inventory.json','r') as cl:
@@ -119,15 +122,36 @@ def collect_items(user_char,n,qty):
     with open('inventory.json','w') as cl:
         json.dump(data,cl,indent=4)
     return user_char,qty
-
+# Next patch XD!
 def use_potion(potion_name,qty,user_name):
+    MaxHP = Game_items.game_list()[0][0]['main_char'].HP
+    main_char = Game_items.game_list()[0][0]['main_char']
+    print(potion_name)
     with open('inventory.json','r') as uspo:
         uspo_data = json.load(uspo)
         for i in range(len(uspo_data)):
             if uspo_data[i]['user'] == user_name:
                 if uspo_data[i]['item'] == potion_name:
-                    uspo_data[i]['qty'] = uspo_data[i]['qty'] - qty
-                #มาทำต่อน๊ะจ๊ะ
+                    print(uspo_data[i]['item'])
+                    # uspo_data[i]['qty'] = uspo_data[i]['qty'] - qty
+                    if potion_name == 'Blue_potion':
+                        main_char.Heal(10)
+                        uspo_data[i]['qty'] = uspo_data[i]['qty'] - qty
+                    elif potion_name == 'Yellow_potion':
+                        main_char.Heal(20)
+                        uspo_data[i]['qty'] = uspo_data[i]['qty'] - qty
+                    elif potion_name == 'Red_potion':
+                        main_char.Heal(30)
+                        uspo_data[i]['qty'] = uspo_data[i]['qty'] - qty
+                    elif potion_name == 'White_potion':
+                        main_char.Heal(40)
+                        uspo_data[i]['qty'] = uspo_data[i]['qty'] - qty
+                    elif potion_name == '????':
+                        main_char.reset(MaxHP)
+                        uspo_data[i]['qty'] = uspo_data[i]['qty'] - qty
+                    else:
+                        print("you don't have that item !")
+                
 
 
 # print(Game_items.game_list()[0][1]['monster'].__dict__)
