@@ -1,7 +1,7 @@
 [
     {
         "user": "test",
-        "score": 20
+        "score": 350
     },
     {
         "user": "test2",
@@ -10,5 +10,13 @@
     {
         "user": "test3",
         "score": 10
+    },
+    {
+        "user": "hello",
+        "score": 20
+    },
+    {
+        "user": "test11",
+        "score": 40
     }
 ]

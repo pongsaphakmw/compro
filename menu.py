@@ -27,7 +27,8 @@ def login_menu():
         choose = int(choose)
         print('\t────────────────────────────────────────────────────────────────')
         if choose == 1:
-            username = login.Register()
+            login.Register()
+            username = login.Login()
             return username
         elif choose == 2 :
             username = login.Login()
@@ -54,6 +55,7 @@ def game_menu():
         print('\t\tGame 2 : Type 2')
         print('\t\tGame 3 : Type 3')
         print('\t\tScore board : Type "S"')
+        print('\t\tType "Q" to exit program')
         print('\t\t\t\t\t\t\t\t\tType "i" to open inventory')
         check = input('Type here : ').lower()
         if check == 'i':
@@ -106,6 +108,17 @@ def game_menu():
                 break
         elif check == 's':
            score_board(username)
+        elif check == 'q' or 'Q':
+            print('''
+                
+██████╗░██╗░░░██╗███████╗  ██╗
+██╔══██╗╚██╗░██╔╝██╔════╝  ██║
+██████╦╝░╚████╔╝░█████╗░░  ██║
+██╔══██╗░░╚██╔╝░░██╔══╝░░  ╚═╝
+██████╦╝░░░██║░░░███████╗  ██╗
+╚═════╝░░░░╚═╝░░░╚══════╝  ╚═╝
+                ''')
+            quit()
         else:
             print('Wrong input')
             continue

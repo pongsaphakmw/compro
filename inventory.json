@@ -12,7 +12,7 @@
     {
         "user": "test",
         "item": "Red_potion",
-        "qty": 12
+        "qty": 15
     },
     {
         "user": "test2",
@@ -32,11 +32,31 @@
     {
         "user": "test",
         "item": "White_potion",
-        "qty": 1
+        "qty": 2
     },
     {
         "user": "test",
         "item": "????",
+        "qty": 1
+    },
+    {
+        "user": "hello",
+        "item": "????",
+        "qty": 0
+    },
+    {
+        "user": "hello",
+        "item": "Blue_potion",
         "qty": 2
+    },
+    {
+        "user": "test11",
+        "item": "White_potion",
+        "qty": 0
+    },
+    {
+        "user": "test11",
+        "item": "White_potion",
+        "qty": 1
     }
 ]

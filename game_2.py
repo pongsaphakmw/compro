@@ -5,19 +5,24 @@ def GAME_2(user_name):
     player = characters.Game_items.game_list()
 
     print("Game 2 ....")
+    print('State 1... Easy mode')
+    print('State 2... Normal mode')
+    print('State 3... Hard mode')
     state = int(input("choose state : "))
     if state == 1:
-        print("Welcome to State 1")
+        print('────────────────────────────────────────────────────────────────')
+        print("\t\t-Welcome to State 1-")
+        print('────────────────────────────────────────────────────────────────')
         print("Calculate the equation to get rid of monsters!!")
-        print("------------------------------")
+        print('────────────────────────────────────────────────────────────────')
         MaxHP_main = player[0][0]['main_char'].HP
         MaxHP_monster = player[0][1]['monster'].HP
         while 1:
             print("%s your  HP is %s "%(player[0][0]['main_char'].name,player[0][0]['main_char'].HP))
             print("%s  have HP %s "%(player[0][1]['monster'].name,player[0][1]['monster'].HP))
-            print("------------------------------")
+            print('────────────────────────────────────────────────────────────────')
             if player[0][0]['main_char'].HP<=0:
-                print("\tlose")
+                print("\t\tlose")
                 player[0][0]['main_char'].reset(MaxHP_main)
                 player[0][1]['monster'].reset(MaxHP_monster)
                 break
@@ -36,7 +41,7 @@ def GAME_2(user_name):
                             print("%s your  HP is %s "%(player[0][0]['main_char'].name,player[0][0]['main_char'].HP))
                             # แก้บัคได้แล้วกุแม่งเก่งว่ะ
             elif player[0][1]['monster'].HP<=0:
-                print("\twon")
+                print("\t\twon")
                 x = randint(0,4);y = randint(0,2)
                 characters.collect_items(user_name,x,y)
                 player[0][0]['main_char'].reset(MaxHP_main)
@@ -64,38 +69,53 @@ def GAME_2(user_name):
                 print("%d + %d"%(x, y))
                 #print(randomproblem)
                 answer = int(input("In put your answer: "))
-                print("------------------------------")
+                print('────────────────────────────────────────────────────────────────')
                 if answer == randomproblem:
-                    print("\tCorrect!!!")
-                    print("------------------------------")
+                    print("\t\tCorrect!!!")
+                    print('────────────────────────────────────────────────────────────────')
                     player[0][1]['monster'].name,player[0][1]['monster'].Attack(10)
                     print("\tyou have done damage!!!")
-                    print("------------------------------")
+                    print('────────────────────────────────────────────────────────────────')
                     break
                 elif answer != randomproblem:
-                    print("\tTry again!!!")
-                    print("------------------------------")
+                    print("\t\tTry again!!!")
+                    print('────────────────────────────────────────────────────────────────')
                     player[0][0]['main_char'].name,player[0][0]['main_char'].Attack(10)
-                    print("\tGot damage!!!")
-                    print("------------------------------")
+                    print("\t\tGot damage!!!")
+                    print('────────────────────────────────────────────────────────────────')
                     break
     elif state == 2:
-        print("Welcome to State 2")
+        print('────────────────────────────────────────────────────────────────')
+        print("\t\t-Welcome to State 2-")
+        print('────────────────────────────────────────────────────────────────')
         print("Calculate the equation to get rid of monsters!!")
-        print("------------------------------")
+        print('────────────────────────────────────────────────────────────────')
         MaxHP_main = player[0][0]['main_char'].HP
         MaxHP_monster = player[0][2]['monster'].HP
         while 1:
             print("%s your  HP is %s "%(player[0][0]['main_char'].name,player[0][0]['main_char'].HP))
             print("%s  have HP %s "%(player[0][2]['monster'].name,player[0][2]['monster'].HP))
-            print("------------------------------")
+            print('────────────────────────────────────────────────────────────────')
             if player[0][0]['main_char'].HP<=0:
-                print("\tlose")
+                print("\t\tlose")
                 player[0][0]['main_char'].reset(MaxHP_main)
                 player[0][2]['monster'].reset(MaxHP_monster)
                 break
+            elif player[0][0]['main_char'].HP <=50:
+                print('Need healing?')
+                print('Open your inventory to heal')
+                inv = input('Type "I" to open inventory : ').lower()
+                if inv == 'i':
+                    char_inv = characters.Character.Inventory(user_name)
+                    choose = input('Choose your potion by number : ')
+                    choose = int(choose)
+                    for i in range(len(char_inv)):
+                        if choose == i:
+                            player[0][0]['main_char'].use_potion(char_inv[i]['item'],1,user_name)
+                            print("%s your  HP is %s "%(player[0][0]['main_char'].name,player[0][0]['main_char'].HP))
+                            # แก้บัคได้แล้วกุแม่งเก่งว่ะ
             elif player[0][2]['monster'].HP<=0:
-                print("\twon")
+                print("\t\twon")
                 player[0][0]['main_char'].reset(MaxHP_main)
                 player[0][2]['monster'].reset(MaxHP_monster)
                 with open('score.json','r') as sc:
@@ -121,38 +141,53 @@ def GAME_2(user_name):
                 print("%d - %d"%(x, y))
                 #print(randomproblem)
                 answer = int(input("In put your answer: "))
-                print("------------------------------")
+                print('────────────────────────────────────────────────────────────────')
                 if answer == randomproblem:
-                    print("\tCorrect!!!")
-                    print("------------------------------")
+                    print("\t\tCorrect!!!")
+                    print('────────────────────────────────────────────────────────────────')
                     player[0][2]['monster'].name,player[0][2]['monster'].Attack(10)
                     print("\tyou have done damage!!!")
-                    print("------------------------------")
+                    print('────────────────────────────────────────────────────────────────')
                     break
                 elif answer != randomproblem:
-                    print("\tTry again!!!")
-                    print("------------------------------")
+                    print("\t\tTry again!!!")
+                    print('────────────────────────────────────────────────────────────────')
                     player[0][0]['main_char'].name,player[0][0]['main_char'].Attack(10)
-                    print("\tGot damage!!!")
-                    print("------------------------------")
+                    print("\t\tGot damage!!!")
+                    print('────────────────────────────────────────────────────────────────')
                     break
     elif state == 3:
-        print("Welcome to State 3")
+        print('────────────────────────────────────────────────────────────────')
+        print("\t\t-Welcome to State 3-")
+        print('────────────────────────────────────────────────────────────────')
         print("Calculate the equation to get rid of monsters!!")
-        print("------------------------------")
+        print('────────────────────────────────────────────────────────────────')
         MaxHP_main = player[0][0]['main_char'].HP
         MaxHP_monster = player[0][3]['monster'].HP
         while 1:
             print("%s your  HP is %s "%(player[0][0]['main_char'].name,player[0][0]['main_char'].HP))
             print("%s  have HP %s "%(player[0][4]['monster'].name,player[0][4]['monster'].HP))
-            print("------------------------------")
+            print('────────────────────────────────────────────────────────────────')
             if player[0][0]['main_char'].HP<=0:
-                print("\tlose")
+                print("\t\tlose")
                 player[0][0]['main_char'].reset(MaxHP_main)
                 player[0][3]['monster'].reset(MaxHP_monster)
                 break
+            elif player[0][0]['main_char'].HP <=50:
+                print('Need healing?')
+                print('Open your inventory to heal')
+                inv = input('Type "I" to open inventory : ').lower()
+                if inv == 'i':
+                    char_inv = characters.Character.Inventory(user_name)
+                    choose = input('Choose your potion by number : ')
+                    choose = int(choose)
+                    for i in range(len(char_inv)):
+                        if choose == i:
+                            player[0][0]['main_char'].use_potion(char_inv[i]['item'],1,user_name)
+                            print("%s your  HP is %s "%(player[0][0]['main_char'].name,player[0][0]['main_char'].HP))
+                            # แก้บัคได้แล้วกุแม่งเก่งว่ะ
             elif player[0][4]['monster'].HP<=0:
-                print("\twon")
+                print("\t\twon")
                 player[0][0]['main_char'].reset(MaxHP_main)
                 player[0][3]['monster'].reset(MaxHP_monster)
                 with open('score.json','r') as sc:
@@ -178,18 +213,18 @@ def GAME_2(user_name):
                 print("%d * %d"%(x, y))
                 #print(randomproblem)
                 answer = int(input("In put your answer: "))
-                print("------------------------------")
+                print('────────────────────────────────────────────────────────────────')
                 if answer == randomproblem:
-                    print("\tCorrect!!!")
-                    print("------------------------------")
+                    print("\t\tCorrect!!!")
+                    print('────────────────────────────────────────────────────────────────')
                     player[0][4]['monster'].name,player[0][4]['monster'].Attack(10)
                     print("\tyou have done damage!!!")
-                    print("------------------------------")
+                    print('────────────────────────────────────────────────────────────────')
                     break
                 elif answer != randomproblem:
-                    print("\tTry again!!!")
-                    print("------------------------------")
+                    print("\t\tTry again!!!")
+                    print('────────────────────────────────────────────────────────────────')
                     player[0][0]['main_char'].name,player[0][0]['main_char'].Attack(10)
-                    print("\tGot damage!!!")
-                    print("------------------------------")
+                    print("\t\tGot damage!!!")
+                    print('────────────────────────────────────────────────────────────────')
                     break
