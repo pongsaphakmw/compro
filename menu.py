@@ -63,7 +63,7 @@ def game_menu():
             
         elif check == '1':
             game_1.GAME_1(username)
-            check_quit = input('Type "Q" to exit : ').lower()
+            check_quit = input('Press "any key" to continue or type "Q" to exit : ').lower()
             print('\t────────────────────────────────────────────────────────────────')
             if check_quit == 'q':
                 print('''
@@ -79,7 +79,7 @@ def game_menu():
             else: continue
         elif check == '2':
             game_2.GAME_2(username)
-            check_quit = input('Type "Q" to exit : ').lower()
+            check_quit = input('Press "any key" to continue or type "Q" to exit : ').lower()
             if check_quit == 'q':
                 print('''
                 
@@ -94,7 +94,7 @@ def game_menu():
             else: continue
         elif check == '3':
             game_3.GAME_3(username)
-            check_quit = input('Type "Q" to exit : ').lower()
+            check_quit = input('Press "any key" to continue or type "Q" to exit : ').lower()
             if check_quit == 'q':
                 print('''
                 

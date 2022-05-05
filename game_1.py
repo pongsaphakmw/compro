@@ -30,6 +30,7 @@ def GAME_1(user_name):
                 player[0][0]['main_char'].reset(MaxHP_main)
                 player[0][1]['monster'].reset(MaxHP_monster)
                 print("won")
+
                 
                 with open('score.json','r') as sc:
                     score_data = 0
@@ -70,12 +71,12 @@ def GAME_1(user_name):
                 print('────────────────────────────────────────────────────────────────')
             elif Useskill == 1 and r == 3:
                 player[0][1]['monster'].name,player[0][1]['monster'].Attack(10)
-                print("\t\tyou have done damage")    
+                print("\t\tํYou did damage !")    
                 print('────────────────────────────────────────────────────────────────')       
             elif Useskill == 2 and r == 1:
                 
                 player[0][1]['monster'].name,player[0][1]['monster'].Attack(10)
-                print("\t\tyou have done damage")
+                print("\t\tํYou did damage !")
                 print('────────────────────────────────────────────────────────────────')
             elif Useskill == 2 and r == 2:
                 player[0][1]['monster'].name,player[0][1]['monster'].Attack(0)
@@ -92,14 +93,15 @@ def GAME_1(user_name):
                 print('────────────────────────────────────────────────────────────────')
             elif Useskill == 3 and r == 2:      
                 player[0][1]['monster'].name,player[0][1]['monster'].Attack(10)   
-                print("\t\tyou have done damage")
+                print("\t\tํYou did damage !")
                 print('────────────────────────────────────────────────────────────────')         
             elif Useskill == 3 and r == 3:
                 player[0][1]['monster'].name,player[0][1]['monster'].Attack(0)
                 print("\t\tDraw")
                 print('────────────────────────────────────────────────────────────────')
-            elif Useskill >=4:
-                break
+            else:
+                print('Wrong input!')
+                print('You will lose your turn')
     elif state == 2:  
         print("\t\t-Welcome to State 2-")
         print("\t\tAttack  = 1")
@@ -172,12 +174,12 @@ def GAME_1(user_name):
                 print('────────────────────────────────────────────────────────────────')
             elif Useskill == 1 and r == 3:
                 player[0][2]['monster'].name,player[0][2]['monster'].Attack(10)
-                print("\t\tyou have done damage")      
+                print("\t\tํYou did damage !")      
                 print('────────────────────────────────────────────────────────────────')     
             elif Useskill == 2 and r == 1:
                 
                 player[0][2]['monster'].name,player[0][2]['monster'].Attack(10)
-                print("\t\tyou have done damage")
+                print("\t\tํYou did damage !")
                 print('────────────────────────────────────────────────────────────────')
             elif Useskill == 2 and r == 2:
                 player[0][2]['monster'].name,player[0][2]['monster'].Attack(0)
@@ -194,14 +196,15 @@ def GAME_1(user_name):
                 print('────────────────────────────────────────────────────────────────')
             elif Useskill == 3 and r == 2:      
                 player[0][2]['monster'].name,player[0][2]['monster'].Attack(10)   
-                print("\t\tyou have done damage")     
+                print("\t\tํYou did damage !")     
                 print('────────────────────────────────────────────────────────────────')    
             elif Useskill == 3 and r == 3:
                 player[0][2]['monster'].name,player[0][2]['monster'].Attack(0)
                 print("\t\tDraw")
                 print('────────────────────────────────────────────────────────────────')
-            elif Useskill >=4:
-                break
+            else:
+                print('Wrong input!')
+                print('You will lose your turn')
     elif state == 3:  
         print("\t\t-Welcome to State 3-")
         print("\t\tAttack  = 1")
@@ -275,12 +278,12 @@ def GAME_1(user_name):
                 print('────────────────────────────────────────────────────────────────')
             elif Useskill == 1 and r == 3:
                 player[0][3]['monster'].name,player[0][3]['monster'].Attack(10)
-                print("\t\tyou have done damage")
+                print("\t\tํYou did damage !")
                 print('────────────────────────────────────────────────────────────────')           
             elif Useskill == 2 and r == 1:
                 
                 player[0][3]['monster'].name,player[0][3]['monster'].Attack(10)
-                print("\t\tyou have done damage")
+                print("\t\tํYou did damage !")
                 print('────────────────────────────────────────────────────────────────')
             elif Useskill == 2 and r == 2:
                 player[0][3]['monster'].name,player[0][3]['monster'].Attack(0)
@@ -297,11 +300,12 @@ def GAME_1(user_name):
                 print('────────────────────────────────────────────────────────────────')
             elif Useskill == 3 and r == 2:      
                 player[0][3]['monster'].name,player[0][3]['monster'].Attack(10)   
-                print("\t\tyou have done damage")
+                print("\t\tํYou did damage !")
                 print('────────────────────────────────────────────────────────────────')         
             elif Useskill == 3 and r == 3:
                 player[0][3]['monster'].name,player[0][3]['monster'].Attack(0)
                 print("\t\tDraw")
                 print('────────────────────────────────────────────────────────────────')
-            elif Useskill >=4:
-                break
+            else:
+                print('Wrong input!')
+                print('You will lose your turn')
